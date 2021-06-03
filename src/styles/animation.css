@@ -1,0 +1,22 @@
+@keyframes btnClick {
+    0%{
+        background-color: #737373;
+    }
+}
+
+@keyframes btnClick01 {
+    0%{
+        background-color: #D9D9D7;
+    }    
+}
+
+#sete  div:active, #oito  div:active,#nove  div:active, #quatro  div:active, 
+#cinco  div:active, #seis  div:active, #um  div:active, #dois  div:active, 
+#tres  div:active, #zero  div:active, #virgula  div:active{
+    animation: btnClick  0.3s ease;
+}
+
+#clear  div:active, #porcentagem  div:active,
+#excluir  div:active{
+    animation: btnClick01  0.3s ease;
+}

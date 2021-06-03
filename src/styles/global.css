@@ -2,182 +2,185 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
 /* RESETANDO O HTML PARA INICIAR O PROJETO */
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-}
+    *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
 /* CONFIGURANDO BODY */
-body{
-    width: 100vw;
-    height: 100vh;
-/*     font-family: 'Roboto', sans-serif; */
-    font-family: 'Montserrat', sans-serif;  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    body{
+        width: 100vw;
+        height: 100vh;
+    /*     font-family: 'Roboto', sans-serif; */
+        font-family: 'Montserrat', sans-serif;  
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
 /* AREA DA CALCULADORA */
-#container{
-    width: 375px;
-    height: 812px;
-    background-color: #000000;
+    #container{
+        width: 375px;
+        height: 812px;
+        background-color: #000000;
 
-    min-width: 375px;
-    min-height: 812px;
+        min-width: 375px;
+        min-height: 812px;
 
 
-    /* criando o template */
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-auto-rows: 30% 14% 14% 14% 14% 14%;
-    grid-template-areas: 
-        "RE RE RE RE"
-        "CC PO DI DE"
-        "SE OI NO XI"
-        "QU CI SI ME"
-        "UM DO TR MA"
-        "ZE ZE VI IG"
-    ;
-}
+        /* criando o template */
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        grid-auto-rows: 30% 14% 14% 14% 14% 14%;
+        grid-template-areas: 
+            "RE RE RE RE"
+            "CC PO DE DI"
+            "SE OI NO XI"
+            "QU CI SI ME"
+            "UM DO TR MA"
+            "ZE ZE VI IG"
+        ;
+    }
 
 /* CONFIGURANDO GRID AREAS */
 /* configurando cada div em seu devido lugar*/
 /* INICIO */
-#resultado{
+    #resultado{
     display: flex; align-items: center; justify-content: center;  grid-area: RE;
-}
-#clear{
+    }
+    #clear{
     display: flex; align-items: center; justify-content: center;  grid-area: CC;
-}
-#porcentagem{
+    }
+    #porcentagem{
     display: flex; align-items: center; justify-content: center;  grid-area: PO;
-}
-#divisao{
+    }
+    #divisao{
     display: flex; align-items: center; justify-content: center;  grid-area: DI;
-}
-#excluir{
+    }
+    #excluir{
     display: flex; align-items: center; justify-content: center;  grid-area: DE;
-}
-#sete{
+    }
+    #sete{
     display: flex; align-items: center; justify-content: center;  grid-area: SE;
-}
-#oito{
+    }
+    #oito{
     display: flex; align-items: center; justify-content: center;  grid-area: OI;
-}
-#nove{
+    }
+    #nove{
     display: flex; align-items: center; justify-content: center;  grid-area: NO;
-}
-#multiplicacao{
+    }
+    #multiplicacao{
     display: flex; align-items: center; justify-content: center;  grid-area: XI;
-}
-#quatro{
+    }
+    #quatro{
     display: flex; align-items: center; justify-content: center;  grid-area: QU;
-}
-#cinco{
+    }
+    #cinco{
     display: flex; align-items: center; justify-content: center;  grid-area: CI;
-}
-#seis{
+    }
+    #seis{
     display: flex; align-items: center; justify-content: center;  grid-area: SI;
-}
-#menos{
+    }
+    #menos{
     display: flex; align-items: center; justify-content: center;  grid-area: ME;
-}
-#um{  
+    }
+    #um{  
     display: flex; align-items: center; justify-content: center;  grid-area: UM;
-}
-#dois{
+    }
+    #dois{
     display: flex; align-items: center; justify-content: center;  grid-area: DO;
-}
-#tres{
+    }
+    #tres{
     display: flex; align-items: center; justify-content: center;  grid-area: TR;
-}
-#mais{
+    }
+    #mais{
     display: flex; align-items: center; justify-content: center;  grid-area: MA;
-}
-#zero{
+    }
+    #zero{
     display: flex; align-items: center; justify-content: center;  grid-area: ZE;
-}
-#virgula{
+    }
+    #virgula{
     display: flex; align-items: center; justify-content: center;  grid-area: VI;
-}
-#igual{
+    }
+    #igual{
     display: flex; align-items: center; justify-content: center;  grid-area: IG;
-}
+    }
 /* CONFIGURANDO GRID AREAS */
 /* FIM */
 
 
 /* CONFIGURANDO A DIV DO RESULTADO */
 /* INICIO */
-#resultado div{
-    width: 100%;
-    height: 100%;
-    /*background: whitesmoke;*/    
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 20px;
-}
+    #resultado div{
+        width: 100%;
+        height: 100%;
+        /*background: whitesmoke;*/    
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 20px;
+    }
 
-#resultado div h1{
-    font-size: 50pt;
-    color: #FFFEFF;
-}
-/* FIIM */
+    #resultado div h1{
+        font-size: 50pt;
+        color: #FFFEFF;
+    }
+/* FIM */
 
 /* CONFIGURANDO OS BOTÕES */
 /* Div que fica responsável por guardar os valores dos botões */
 /* INICIO */
-#clear  div, #porcentagem  div, #divisao  div, #excluir  div,
-#sete  div, #oito  div, #nove  div, #multiplicacao  div,
-#quatro  div, #cinco  div, #seis  div, #menos  div,
-#um  div, #dois  div, #tres  div, #mais  div, #virgula  div, #igual  div{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
-    height: 68%;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
+    #clear  div, #porcentagem  div, #divisao  div, #excluir  div,
+    #sete  div, #oito  div, #nove  div, #multiplicacao  div,
+    #quatro  div, #cinco  div, #seis  div, #menos  div,
+    #um  div, #dois  div, #tres  div, #mais  div, #virgula  div, #igual  div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+        height: 68%;
+        border-radius: 50%;
+        cursor: pointer;
+    }
 
-#zero  div{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding-left: 22px;
-    width: 90%;
-    height: 68%;
-    border-radius: 40px;
-    background-color: beige;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
+    #zero  div{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 28px;
+        width: 90%;
+        height: 68%;
+        border-radius: 40px;
+        background-color: beige;
+        cursor: pointer;
+    }
 /* CONFIGURANDO OS BOTÕES */
 /* FIM */
 
 /* DEFININDO AS CORES DOS BOTÕES */
 /* INICIO */
-#clear  div, #porcentagem  div,
-#divisao  div{
-    background-color: #A7A4A7;
-    color: #100D10;
-}
+    #clear  div, #porcentagem  div,#excluir  div
+    {
+        background-color: #A7A4A7;
+        color: #100D10;
+    }
 
-#excluir  div, #multiplicacao  div,
-#menos  div, #mais  div, #igual  div{
-    background-color: #F19A38;
-    color: #FFFEFF;
-}
+    #multiplicacao  div,
+    #menos  div, #mais  div, #igual  div,#divisao  div{
+        background-color: #F19A38;
+        color: #FFFEFF;
+    }
 
-#sete  div, #oito  div,#nove  div, #quatro  div, 
-#cinco  div, #seis  div, #um  div, #dois  div, 
-#tres  div, #zero  div, #virgula  div{
-    background-color: #353235;
-    color: #FFFEFF;
-}
+    #sete  div, #oito  div,#nove  div, #quatro  div, 
+    #cinco  div, #seis  div, #um  div, #dois  div, 
+    #tres  div, #zero  div, #virgula  div{
+        background-color: #353235;
+        color: #FFFEFF;
+    }
 /* DEFININDO AS CORES DOS BOTÕES */
 /* FIM */
+
+
+
+
+
