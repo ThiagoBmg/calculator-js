@@ -1,0 +1,99 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Calculadore */
+#container{
+    width: 375px;
+    height: 812px;
+    background-color: #000000;
+
+    min-width: 375px;
+    min-height: 812px;
+
+
+    /* criando o template */
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-auto-rows: 30% 14% 14% 14% 14% 14%;
+    grid-template-areas: 
+        "RE RE RE RE"
+        "CC PO DI DE"
+        "SE OI NO XI"
+        "QU CI SI ME"
+        "UM DO TR MA"
+        "ZE ZE VI IG"
+    ;
+}
+
+#resultado{
+    grid-area: RE;
+}
+#clear{
+    grid-area: CC;
+}
+#porcentagem{
+    grid-area: PO;
+}
+#divisao{
+    grid-area: DI;
+}
+#excluir{
+    grid-area: DE;
+}
+#sete{
+    grid-area: SE;
+}
+#oito{
+    grid-area: OI;
+}
+#nove{
+    grid-area: NO;
+}
+#multiplicacao{
+    grid-area: XI;
+}
+#quatro{
+    grid-area: QU;
+}
+#cinco{
+    grid-area: CI;
+}
+#seis{
+    grid-area: SI;
+}
+#menos{
+    grid-area: ME;
+}
+#um{  
+    grid-area: UM;
+}
+#dois{
+    grid-area: DO;
+}
+#tres{
+    grid-area: TR;
+}
+#mais{
+    grid-area: MA;
+}
+#zero{
+    grid-area: ZE;
+}
+#virgula{
+    grid-area: VI;
+}
+#igual{
+    grid-area: IG;
+}
