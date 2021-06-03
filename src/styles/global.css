@@ -1,19 +1,24 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+/* RESETANDO O HTML PARA INICIAR O PROJETO */
 *{
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
-
+/* CONFIGURANDO BODY */
 body{
     width: 100vw;
     height: 100vh;
-
+/*     font-family: 'Roboto', sans-serif; */
+    font-family: 'Montserrat', sans-serif;  
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Calculadore */
+/* AREA DA CALCULADORA */
 #container{
     width: 375px;
     height: 812px;
@@ -37,63 +42,142 @@ body{
     ;
 }
 
+/* CONFIGURANDO GRID AREAS */
+/* configurando cada div em seu devido lugar*/
+/* INICIO */
 #resultado{
-    grid-area: RE;
+    display: flex; align-items: center; justify-content: center;  grid-area: RE;
 }
 #clear{
-    grid-area: CC;
+    display: flex; align-items: center; justify-content: center;  grid-area: CC;
 }
 #porcentagem{
-    grid-area: PO;
+    display: flex; align-items: center; justify-content: center;  grid-area: PO;
 }
 #divisao{
-    grid-area: DI;
+    display: flex; align-items: center; justify-content: center;  grid-area: DI;
 }
 #excluir{
-    grid-area: DE;
+    display: flex; align-items: center; justify-content: center;  grid-area: DE;
 }
 #sete{
-    grid-area: SE;
+    display: flex; align-items: center; justify-content: center;  grid-area: SE;
 }
 #oito{
-    grid-area: OI;
+    display: flex; align-items: center; justify-content: center;  grid-area: OI;
 }
 #nove{
-    grid-area: NO;
+    display: flex; align-items: center; justify-content: center;  grid-area: NO;
 }
 #multiplicacao{
-    grid-area: XI;
+    display: flex; align-items: center; justify-content: center;  grid-area: XI;
 }
 #quatro{
-    grid-area: QU;
+    display: flex; align-items: center; justify-content: center;  grid-area: QU;
 }
 #cinco{
-    grid-area: CI;
+    display: flex; align-items: center; justify-content: center;  grid-area: CI;
 }
 #seis{
-    grid-area: SI;
+    display: flex; align-items: center; justify-content: center;  grid-area: SI;
 }
 #menos{
-    grid-area: ME;
+    display: flex; align-items: center; justify-content: center;  grid-area: ME;
 }
 #um{  
-    grid-area: UM;
+    display: flex; align-items: center; justify-content: center;  grid-area: UM;
 }
 #dois{
-    grid-area: DO;
+    display: flex; align-items: center; justify-content: center;  grid-area: DO;
 }
 #tres{
-    grid-area: TR;
+    display: flex; align-items: center; justify-content: center;  grid-area: TR;
 }
 #mais{
-    grid-area: MA;
+    display: flex; align-items: center; justify-content: center;  grid-area: MA;
 }
 #zero{
-    grid-area: ZE;
+    display: flex; align-items: center; justify-content: center;  grid-area: ZE;
 }
 #virgula{
-    grid-area: VI;
+    display: flex; align-items: center; justify-content: center;  grid-area: VI;
 }
 #igual{
-    grid-area: IG;
+    display: flex; align-items: center; justify-content: center;  grid-area: IG;
 }
+/* CONFIGURANDO GRID AREAS */
+/* FIM */
+
+
+/* CONFIGURANDO A DIV DO RESULTADO */
+/* INICIO */
+#resultado div{
+    width: 100%;
+    height: 100%;
+    /*background: whitesmoke;*/    
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+
+#resultado div h1{
+    font-size: 50pt;
+    color: #FFFEFF;
+}
+/* FIIM */
+
+/* CONFIGURANDO OS BOTÕES */
+/* Div que fica responsável por guardar os valores dos botões */
+/* INICIO */
+#clear  div, #porcentagem  div, #divisao  div, #excluir  div,
+#sete  div, #oito  div, #nove  div, #multiplicacao  div,
+#quatro  div, #cinco  div, #seis  div, #menos  div,
+#um  div, #dois  div, #tres  div, #mais  div, #virgula  div, #igual  div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 68%;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#zero  div{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 22px;
+    width: 90%;
+    height: 68%;
+    border-radius: 40px;
+    background-color: beige;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+/* CONFIGURANDO OS BOTÕES */
+/* FIM */
+
+/* DEFININDO AS CORES DOS BOTÕES */
+/* INICIO */
+#clear  div, #porcentagem  div,
+#divisao  div{
+    background-color: #A7A4A7;
+    color: #100D10;
+}
+
+#excluir  div, #multiplicacao  div,
+#menos  div, #mais  div, #igual  div{
+    background-color: #F19A38;
+    color: #FFFEFF;
+}
+
+#sete  div, #oito  div,#nove  div, #quatro  div, 
+#cinco  div, #seis  div, #um  div, #dois  div, 
+#tres  div, #zero  div, #virgula  div{
+    background-color: #353235;
+    color: #FFFEFF;
+}
+/* DEFININDO AS CORES DOS BOTÕES */
+/* FIM */

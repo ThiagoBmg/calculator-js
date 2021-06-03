@@ -5,30 +5,72 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/styles/global.css">
+
     <title>Calculadora</title>
 </head>
 <body>
     <div id="container">
-        <div id="resultado"></div>
-        <div id="clear"></div>
-        <div id="porcentagem"></div>
-        <div id="divisao"></div>
-        <div id="excluir"></div>
-        <div id="sete"></div>
-        <div id="oito"></div>
-        <div id="nove"></div>
-        <div id="multiplicacao"></div>
-        <div id="quatro"></div>
-        <div id="cinco"></div>
-        <div id="seis"></div>
-        <div id="menos"></div>
-        <div id="um"></div>
-        <div id="dois"></div>
-        <div id="tres"></div>
-        <div id="mais"></div>
-        <div id="zero"></div>
-        <div id="virgula"></div>
-        <div id="igual"></div>
+        <div id="resultado">
+            <div><h1 id="resultado_value">0</h1></div>
+        </div>
+        <div onClick="digitar('clear')"  id="clear">
+            <div><h1>C</h1></div>
+        </div>
+        <div onClick="digitar('%')" id="porcentagem">
+            <div><h1>%</h1></div>
+        </div>
+        <div onClick="digitar('÷')" id="divisao">
+            <div><h1>÷</h1></div>
+        </div>
+        <div onClick="digitar('E')" id="excluir">
+            <div><h1>E</h1></div>
+        </div>
+        <div onClick="digitar(7)" id="sete">
+            <div><h1>7</h1></div>
+        </div>
+        <div onClick="digitar(8)" id="oito">
+            <div><h1>8</h1></div>
+        </div>
+        <div onClick="digitar(9)" id="nove">
+            <div><h1>9</h1></div>
+        </div>
+        <div onClick="digitar('x')" id="multiplicacao">
+            <div><h1>x</h1></div>
+        </div>
+        <div onClick="digitar(4)" id="quatro">
+            <div><h1>4</h1></div>
+        </div>
+        <div onClick="digitar(5)" id="cinco">
+            <div><h1>5</h1></div>
+        </div>
+        <div onClick="digitar(6)" id="seis">
+            <div><h1>6</h1></div>
+        </div>
+        <div onClick="digitar('-')" id="menos">
+            <div><h1>-</h1></div>
+        </div>
+        <div onClick="digitar(1)" id="um">
+            <div><h1>1</h1></div>
+        </div>
+        <div onClick="digitar(2)" id="dois">
+            <div><h1>2</h1></div>
+        </div>
+        <div onClick="digitar(3)" id="tres">
+            <div><h1>3</h1></div>
+        </div>
+        <div onClick="digitar('+')" id="mais">
+            <div><h1>+</h1></div>
+        </div>
+        <div onClick="digitar(0)" id="zero">
+            <div><h1>0</h1></div>
+        </div>
+        <div onClick="digitar(',')" id="virgula">
+            <div><h1>,</h1></div>
+        </div>
+        <div onClick="digitar('=')" id="igual">
+            <div><h1>=</h1></div>
+        </div>
     </div>
+    <script src="./src/core/index.js"></script>
 </body>
 </html>
