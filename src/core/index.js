@@ -11,7 +11,7 @@ const igual_btn = document.querySelector('#igual div');
 const defaulStyle = divisao_btn.style;
 // variavel que ira guardar as possibilidades de ações
 const btn_actions = {
-     // função que ativa a cor do botão selecionado pelo usuário
+    // função que desativa todos os botões
     clearButton(){
         somar_btn.style = defaulStyle;
         subtrair_btn.style = defaulStyle;
@@ -19,30 +19,37 @@ const btn_actions = {
         divisao_btn.style = defaulStyle;
         igual_btn.style = defaulStyle;
     },
-     activeButton(x){
+    // função que ativa a cor do botão selecionado pelo usuário
+    activeButton(x){
         this.clearButton();
-        if( x === '+'){
-          somar_btn.style.backgroundColor = '#FFFEFF';
-          somar_btn.style.transition = 'all .3s ease';
-          somar_btn.style.color = '#F19A38'
-        }
-        else if(x === '-'){
-          subtrair_btn.style.backgroundColor = '#FFFEFF';
-          subtrair_btn.style.transition = 'all .3s ease';
-          subtrair_btn.style.color = '#F19A38'
-        }
-        else if(x === 'x'){
-          multiplicar_btn.style.backgroundColor = '#FFFEFF';
-          multiplicar_btn.style.transition = 'all .3s ease';
-          multiplicar_btn.style.color = '#F19A38'
-        }
-        else if( x=== '÷'){
-           divisao_btn.style.backgroundColor = '#FFFEFF';
-           divisao_btn.style.transition = 'all .3s ease';
-           divisao_btn.style.color = '#F19A38'
-        }
-        else if( x=== '='){
-            igual_btn.style.animation = 'btnIgual .3s ease'
+        let tmp_color = '#F19A38';
+        let tmp_transition = 'all .3s ease';
+        let tmp_backgroundColor = '#FFFEFF';
+
+        switch(x){
+            case '+':
+                somar_btn.style.backgroundColor =tmp_backgroundColor;
+                somar_btn.style.transition = tmp_transition;
+                somar_btn.style.color = tmp_color;
+                break
+            case '-':
+                subtrair_btn.style.backgroundColor = tmp_backgroundColor;
+                subtrair_btn.style.transition = tmp_transition;
+                subtrair_btn.style.color = tmp_color;
+                break
+            case 'x':
+                multiplicar_btn.style.backgroundColor = tmp_backgroundColor;
+                multiplicar_btn.style.transition =tmp_transition;
+                multiplicar_btn.style.color = tmp_color;
+                break
+            case '÷':
+                divisao_btn.style.backgroundColor =tmp_backgroundColor;
+                divisao_btn.style.transition = tmp_transition;
+                divisao_btn.style.color = tmp_color;
+                break
+            case '=':
+                igual_btn.style.animation = 'btnIgual .3s ease'
+                break
         }
     }
 }
