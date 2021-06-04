@@ -1,108 +1,130 @@
-const resultado_value = document.querySelector('#resultado_value');
+const result = document.querySelector('#resultado_value');
 
+// guardando os botões para manipular nos clicks
 const somar_btn  = document.querySelector('#mais div');
 const subtrair_btn  = document.querySelector('#menos div');
 const multiplicar_btn  = document.querySelector('#multiplicacao div');
 const divisao_btn  = document.querySelector('#divisao div');
-const defaulStyle = divisao_btn.style;
-class Calculadora{
-    constructor(){
-        this.value = ['1term','ops'];
-        this.status = false;
-        this.limpar();
-    }
+const igual_btn = document.querySelector('#igual div');
 
-    limpar(){
-        this.value = ['1term','ops'];
-        resultado_value.innerHTML = 0;
+// style default dos botões
+const defaulStyle = divisao_btn.style;
+// variavel que ira guardar as possibilidades de ações
+const btn_actions = {
+     // função que ativa a cor do botão selecionado pelo usuário
+    clearButton(){
+        somar_btn.style = defaulStyle;
         subtrair_btn.style = defaulStyle;
         multiplicar_btn.style = defaulStyle;
         divisao_btn.style = defaulStyle;
-        somar_btn.style = defaulStyle;
-        this.status = false;
-    }
- 
-    handler(operacao){
-        //this.status = true;
-        //this.activeButton(operacao);
-        let current_value = parseInt(resultado_value.innerHTML);
-
-        if(this.value[0]==='1term') {
-            this.value[0] = current_value
-            this.value[1] = operacao
-        }
-
-        //else if(this.value[0]!='1term' && this.value[1] !='ops'){
-        //    return resultado_value.innerHTML = Methodos.init(this.value[0],current_value,this.value[1]);
-        //}
-        console.log(this.value)
-    }
-
-
-    calculate(){
-        let current_value = parseInt(resultado_value.innerHTML);
-        if(this.value[0] != '1term') return resultado_value.innerHTML =  Methodos.init(this.value[0],current_value,this.value[1]);
-    }
-
-    // função que ativa a cor do botão selecionado pelo usuário
-    activeButton(x){
+        igual_btn.style = defaulStyle;
+    },
+     activeButton(x){
+        this.clearButton();
         if( x === '+'){
           somar_btn.style.backgroundColor = '#FFFEFF';
           somar_btn.style.transition = 'all .3s ease';
           somar_btn.style.color = '#F19A38'
-          subtrair_btn.style = defaulStyle;
-          multiplicar_btn.style = defaulStyle;
-          divisao_btn.style = defaulStyle;
         }
         else if(x === '-'){
           subtrair_btn.style.backgroundColor = '#FFFEFF';
           subtrair_btn.style.transition = 'all .3s ease';
           subtrair_btn.style.color = '#F19A38'
-          somar_btn.style = defaulStyle;
-          multiplicar_btn.style = defaulStyle;
-          divisao_btn.style = defaulStyle;
         }
         else if(x === 'x'){
           multiplicar_btn.style.backgroundColor = '#FFFEFF';
           multiplicar_btn.style.transition = 'all .3s ease';
           multiplicar_btn.style.color = '#F19A38'
-          somar_btn.style = defaulStyle;
-          subtrair_btn.style = defaulStyle;
-          divisao_btn.style = defaulStyle;
         }
         else if( x=== '÷'){
            divisao_btn.style.backgroundColor = '#FFFEFF';
            divisao_btn.style.transition = 'all .3s ease';
            divisao_btn.style.color = '#F19A38'
-           somar_btn.style = defaulStyle;
-           subtrair_btn.style = defaulStyle;
-           multiplicar_btn.style = defaulStyle;
         }
-        else{
-            somar_btn.style = defaulStyle;
-            subtrair_btn.style = defaulStyle;
-            multiplicar_btn.style = defaulStyle;
-            divisao_btn.style = defaulStyle;
+        else if( x=== '='){
+            igual_btn.style.animation = 'btnIgual .3s ease'
         }
     }
-
-    Dwrite(x){
-        subtrair_btn.style = defaulStyle;
-        multiplicar_btn.style = defaulStyle;
-        divisao_btn.style = defaulStyle;
-        somar_btn.style = defaulStyle;
-
-        if(this.status){
-            resultado_value.innerHTML = x
-            this.status = false
-        }
-        else{
-            if(!x && resultado_value.innerHTML == '0') return false
-            else if(x == ',' && resultado_value.innerHTML == '0') return resultado_value.innerHTML += x
-            else if(x && resultado_value.innerHTML == '0') return resultado_value.innerHTML = x
-            else if(resultado_value.innerHTML !== '0') return resultado_value.innerHTML += x
-        }
-    }
-
 }
 
+// variavel que guarda as opções de operações matematicas
+const Methodos = {
+    sum(a,b){
+        return (parseFloat(a)+parseFloat(b)).toString()
+    },
+    mul(a,b){
+        return a*b
+    },
+    div(a,b){
+        return a/b
+    },
+    sub(a,b){
+        return a-b
+    },
+    init(a,b,x){
+        if(x==='+') return this.sum(a,b)
+        if(x==='-') return this.sub(a,b)
+        if(x==='x') return this.mul(a,b)
+        if(x==='÷') return this.div(a,b)
+    }
+}
+
+class Calculator{
+    constructor(){
+        this.reset()
+    }
+    // função que printa as ações no display
+    print(x){
+        result.innerHTML = x;
+        //console.log(x);
+    }
+    //
+    reset(){
+        this.last_value = 0 // armazena o termo 1
+        this.current_value = 0; // valor atual (inicia como 0)
+        this.on_operation = false; // variavel que é acionada quando uma operação é solicitada
+        this.operation = false; // operação da conta
+        this.print(this.current_value); // printando um valor inicial
+    }
+    // função que recebe os valores da calculadora
+    inputNumbers(number){
+        this.print(this.current_value)
+        if(resultado_value.innerHTML.length>7) return false;
+        if(!number && resultado_value.innerHTML == '0') return false;
+        if(resultado_value.innerHTML.lastIndexOf(',') + 1 === resultado_value.innerHTML.length && number == ',') return false
+        else if(number == ',' && resultado_value.innerHTML == '0')  this.current_value += (number).toString();
+        else if(number && resultado_value.innerHTML == '0')  this.current_value = (number).toString();
+        else if(resultado_value.innerHTML !== '0')  this.current_value += (number).toString();
+        return this.print(this.current_value)
+    }
+    //
+    calcular(x){
+        if(x === '='){
+            btn_actions.activeButton(x)
+        }
+        //console.log( this.on_operation ,this.operation )
+        this.current_value = Methodos.init(this.last_value, this.current_value, this.operation);
+        this.print(this.current_value);
+        this.last_value = 0;
+        this.operation = false;
+        this.on_operation = false;
+    }
+    //
+    operator(x){
+        // se condição que existe um operador esperando for positiva
+        if(!this.on_operation){
+            this.on_operation = true; // iniciando operação
+            this.operation = x;  // defininindo qual a operação
+            btn_actions.activeButton(x); // ativando o estilo do botão
+            this.last_value = this.current_value; // definindo o valor atual como o last para zerar e pegar o proximo valor
+            this.current_value = 0; // preparando para pegar o termo 2
+        }
+        else if(this.on_operation){
+            this.calcular(this.operation)
+            btn_actions.clearButton()
+        }
+        //if(this.operation === '='){
+        //    console.log(x)
+        //}
+    }
+}

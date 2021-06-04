@@ -10,6 +10,14 @@
     }    
 }
 
+@keyframes btnIgual{
+    0%{
+        background-color: #FFFEFF;
+        transition: all .3s ease;
+        color: #F19A38;
+    }
+}
+
 #sete  div:active, #oito  div:active,#nove  div:active, #quatro  div:active, 
 #cinco  div:active, #seis  div:active, #um  div:active, #dois  div:active, 
 #tres  div:active, #zero  div:active, #virgula  div:active{

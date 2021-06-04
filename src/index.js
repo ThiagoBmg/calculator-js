@@ -1,18 +1,9 @@
-const calculadora = new Calculadora();
-console.log(calculadora.value)
-function digitar(x){
+const calculadora = new Calculator();
 
-    if(typeof x === 'number' || x === ','){
-        calculadora.Dwrite(x);
-    }
-    else if(x === 'clear'){
-        calculadora.limpar();
-    }
-    else if(x === '='){
-        calculadora.calculate(x);
-    }
-    else{
-        calculadora.handler(x);
-    }
+function digitar(x){
+    if(x === 'clear') calculadora.reset();
+    if(typeof x === 'number' || x === ',')  calculadora.inputNumbers(x); 
+    if( x === '+' || x === '-' || x === 'x' || x === '÷')  calculadora.operator(x); /* if(!calculadora.on_operation) */
+    if( x === '=') calculadora.calcular(x); /* if(!calculadora.on_operation)  */
 }
 
