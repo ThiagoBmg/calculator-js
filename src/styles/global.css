@@ -13,6 +13,7 @@
         height: 100vh;
     /*     font-family: 'Roboto', sans-serif; */
         font-family: 'Montserrat', sans-serif;  
+       /*  font-weight: bold; */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -116,14 +117,16 @@
         height: 100%;
         /*background: whitesmoke;*/    
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         justify-content: flex-end;
         padding-right: 20px;
+        padding-bottom: 20px;
     }
 
     #resultado div h1{
         font-size: 50pt;
         color: #FFFEFF;
+        letter-spacing: .2rem;
     }
 /* FIM */
 
@@ -137,7 +140,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 80%;
+        width: 83%;
         height: 68%;
         border-radius: 50%;
         cursor: pointer;
@@ -159,8 +162,7 @@
 
 /* DEFININDO AS CORES DOS BOTÕES */
 /* INICIO */
-    #clear  div, #porcentagem  div,#excluir  div
-    {
+    #clear  div, #porcentagem  div,#excluir  div{
         background-color: #A7A4A7;
         color: #100D10;
     }
