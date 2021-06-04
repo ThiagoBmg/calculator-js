@@ -73,12 +73,12 @@ class Calculator{
     constructor(){
         this.reset()
     }
-    // função que printa as ações no display
+    // printa as ações no display
     print(x){
         result.innerHTML = x;
         //console.log(x);
     }
-    //
+    // redefine os valores da calculadora
     reset(){
         this.last_value = 0 // armazena o termo 1
         this.current_value = 0; // valor atual (inicia como 0)
@@ -97,7 +97,7 @@ class Calculator{
         else if(resultado_value.innerHTML !== '0')  this.current_value += (number).toString();
         return this.print(this.current_value)
     }
-    //
+    // calcula variavel last value com a current value de acordo com a operação selecionada
     calcular(x){
         if(x === '='){
             btn_actions.activeButton(x)
@@ -109,7 +109,7 @@ class Calculator{
         this.operation = false;
         this.on_operation = false;
     }
-    //
+    // caso o usuário selecione um operador ao ivés de uma letra
     operator(x){
         // se condição que existe um operador esperando for positiva
         if(!this.on_operation){
