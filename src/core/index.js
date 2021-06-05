@@ -32,6 +32,7 @@ const btn_actions = {
         let tmp_transition = 'all .3s ease'; // cor botão ativado
         let tmp_backgroundColor = '#FFFEFF'; // cor botão ativado
 
+        // responsável por alterar o estilo do botão clicado 
         switch(x){
             case '+':
                 somar_btn.style.backgroundColor =tmp_backgroundColor;
