@@ -6,4 +6,3 @@ function digitar(x){
     if( x === '+' || x === '-' || x === 'x' || x === '÷')  calculadora.operator(x); /* if(!calculadora.on_operation) */
     if( x === '=') calculadora.calcular(x); /* if(!calculadora.on_operation)  */
 }
-

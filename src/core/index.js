@@ -7,8 +7,12 @@ const multiplicar_btn  = document.querySelector('#multiplicacao div');
 const divisao_btn  = document.querySelector('#divisao div');
 const igual_btn = document.querySelector('#igual div');
 
+// variavel que guarda os calculos realizados e os resultados temporariamente
+var TMP_LOG = []; 
+
 // style default dos botões
 const defaulStyle = divisao_btn.style;
+
 // variavel que ira guardar as possibilidades de ações
 const btn_actions = {
     // função que desativa todos os botões
@@ -21,10 +25,12 @@ const btn_actions = {
     },
     // função que ativa a cor do botão selecionado pelo usuário
     activeButton(x){
-        this.clearButton();
-        let tmp_color = '#F19A38';
-        let tmp_transition = 'all .3s ease';
-        let tmp_backgroundColor = '#FFFEFF';
+        this.clearButton(); // desativando os botões ativados anteriormente antes de ativar o atual
+
+        // estilos
+        let tmp_color = '#F19A38'; // cor botão ativado
+        let tmp_transition = 'all .3s ease'; // cor botão ativado
+        let tmp_backgroundColor = '#FFFEFF'; // cor botão ativado
 
         switch(x){
             case '+':
@@ -87,30 +93,51 @@ class Calculator{
     }
     // redefine os valores da calculadora
     reset(){
-        this.last_value = 0 // armazena o termo 1
+        this.last_value = 0 // armazena o termo 1 
         this.current_value = 0; // valor atual (inicia como 0)
         this.on_operation = false; // variavel que é acionada quando uma operação é solicitada
-        this.operation = false; // operação da conta
+        this.operation = false; // operação da conta a ser realizada
+        btn_actions.clearButton();
         this.print(this.current_value); // printando um valor inicial
     }
     // função que recebe os valores da calculadora
     inputNumbers(number){
-        this.print(this.current_value)
-        if(resultado_value.innerHTML.length>7) return false;
-        if(!number && resultado_value.innerHTML == '0') return false;
-        if(resultado_value.innerHTML.lastIndexOf(',') + 1 === resultado_value.innerHTML.length && number == ',') return false
-        else if(number == ',' && resultado_value.innerHTML == '0')  this.current_value += (number).toString();
-        else if(number && resultado_value.innerHTML == '0')  this.current_value = (number).toString();
-        else if(resultado_value.innerHTML !== '0')  this.current_value += (number).toString();
-        return this.print(this.current_value)
+        this.print(this.current_value) // imprimimdo o valor atual
+        //VALIDAÇÕES
+        if(resultado_value.innerHTML.length>7) return false; // caso a quantidade dos numeros digitados seja igual a 8, retorna false
+        if(!number && resultado_value.innerHTML == '0') return false; // caso o valor atual seja zero e o usuário digitar zero, retorna false
+        if(resultado_value.innerHTML.lastIndexOf(',') + 1 === resultado_value.innerHTML.length && number == ',') return false // caso o ultimo digito for a virgula e o usuário digitar virgula, retorna false
+        //
+        else if(number == ',' && resultado_value.innerHTML == '0')  this.current_value += (number).toString(); // caso o valor atual seja igual a zero e o usuário digitar ',', retorna 0, 
+        else if(number && resultado_value.innerHTML == '0')  this.current_value = (number).toString(); // caso o valor atual seja zero e o usuário digitar um valor > 0, ele substitui o valor atual pelo valor digitado
+        else if(resultado_value.innerHTML !== '0')  this.current_value += (number).toString(); // caso o valor atual seja > 0 ele concatena os valores digitados
+        return this.print(this.current_value) // imprimindo o valor atual depois das ações
     }
     // calcula variavel last value com a current value de acordo com a operação selecionada
     calcular(x){
+        // caso o botão seja o = ele ativa o efeito de cor 
         if(x === '='){
             btn_actions.activeButton(x)
         }
-        //console.log( this.on_operation ,this.operation )
-        this.current_value = Methodos.init(this.last_value, this.current_value, this.operation);
+
+        // caso os números guardados forem inválidos ele não realiza a conta
+        // ou os dois termos forem iguais a zero
+        if(this.last_value == 'NaN' || this.current_value == 'NaN' || !this.current_value && ! this.last_value) return false 
+
+        var c_result = Methodos.init(this.last_value, this.current_value, this.operation);
+        //console.log(this)
+
+        if (typeof c_result == 'undefined') return false; // caso o resultado retorne um valor inválido ele não ira prosseguir com as etapas de salvar o resultado. 
+
+        // guardando temporariamente os valores utilizados na calculadora
+        TMP_LOG.push({
+            last_value :this.last_value,
+            current_value: this.current_value,
+            operation: this.operation,
+            result:c_result
+        });
+
+        this.current_value = c_result;
         this.print(this.current_value);
         this.last_value = 0;
         this.operation = false;
@@ -119,7 +146,7 @@ class Calculator{
     // caso o usuário selecione um operador ao ivés de uma letra
     operator(x){
         // se condição que existe um operador esperando for positiva
-        if(!this.on_operation){
+        if(!this.on_operation || !x){
             this.on_operation = true; // iniciando operação
             this.operation = x;  // defininindo qual a operação
             btn_actions.activeButton(x); // ativando o estilo do botão
@@ -127,11 +154,10 @@ class Calculator{
             this.current_value = 0; // preparando para pegar o termo 2
         }
         else if(this.on_operation){
-            this.calcular(this.operation)
-            btn_actions.clearButton()
+            if(this.operation === x || !this.current_value && ! this.last_value) return false // caso a operação digitada for igual a atual, retorna false
+            
+            this.calcular(this.operation) // caso o botão de operação seja diferente e no minimo um dos termos forem > o, calcula os termos 
+            btn_actions.clearButton() // desativando os botões
         }
-        //if(this.operation === '='){
-        //    console.log(x)
-        //}
     }
 }
